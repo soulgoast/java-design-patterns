@@ -28,7 +28,9 @@ import org.slf4j.LoggerFactory;
 import com.iluwatar.abstractfactory.App.FactoryMaker.KingdomType;
 
 /**
- * 
+ * 经商有两种模式，一种是先寻找市场，先拿订单再找市场。还有一种是先生产，再找市场。第一种风险小，第二种风险大。
+ *
+ *
  * The Abstract Factory pattern provides a way to encapsulate a group of individual factories that have a common theme
  * without specifying their concrete classes. In normal usage, the client software creates a concrete implementation of
  * the abstract factory and then uses the generic interface of the factory to create the concrete objects that are part

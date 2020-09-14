@@ -28,6 +28,51 @@ import java.util.stream.Stream;
 
 /**
  * Document interface
+ * 一种数据的组织方式
+ *
+ * 现在有一个小车对象，就差轮子，门了。
+ * class Car {
+ *     private String model;
+ *
+ *     private float price;
+ *
+ *     private Wheel wheel;
+ *
+ *     private Door door;
+ * }
+ *
+ * class Wheel {
+ *
+ *     private String model;
+ *
+ *     private float price;
+ * }
+ *
+ * class Door {
+ *     private String model;
+ *
+ *     private float price;
+ * }
+ *
+ * 封装行为和属性
+ *
+ * 存和取
+ *
+ * 属性自定义
+ *
+ * 数据结构比较灵活，行为比较简单。
+ *
+ * 对象及其部件有部分相同的属性
+ *
+ *
+ *
+ *
+ *
+ * NoSQL
+ *
+ *
+ * 抽象文档是树形接口单个节点的抽象
+ *
  */
 public interface Document {
 
