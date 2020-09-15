@@ -56,6 +56,7 @@ public class JsonFileJournal {
 
   /**
    * Instantiates a new Json file journal.
+   * 创建一个名为Journal.json的文件
    */
   public JsonFileJournal() {
     aFile = new File("Journal.json");

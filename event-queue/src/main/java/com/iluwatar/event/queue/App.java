@@ -49,8 +49,8 @@ public class App {
    */
   public static void main(String[] args) throws UnsupportedAudioFileException, IOException, InterruptedException {
     Audio audio = Audio.getInstance();
-    audio.playSound(audio.getAudioStream("./etc/Bass-Drum-1.wav"), -10.0f);
-    audio.playSound(audio.getAudioStream("./etc/Closed-Hi-Hat-1.wav"), -8.0f);
+    audio.playSound(audio.getAudioStream("event-queue/etc/Bass-Drum-1.wav"), -10.0f);
+    audio.playSound(audio.getAudioStream("event-queue/etc/Closed-Hi-Hat-1.wav"), -8.0f);
     
     System.out.println("Press Enter key to stop the program...");
     try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {

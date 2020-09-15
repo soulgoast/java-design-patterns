@@ -40,6 +40,7 @@ public class AccountCreateEvent extends DomainEvent {
 
   /**
    * Instantiates a new Account create event.
+   * 新建一个账户的时间
    *
    * @param sequenceId the sequence id
    * @param createdTime the created time

@@ -47,6 +47,8 @@ import org.slf4j.LoggerFactory;
  * down, system state is recovered by re-creating the past events from event journal. Then state is
  * printed so a user can view the last state is same with the state before system shot down.
  *
+ * 记录用户的行为
+ *
  * Created by Serdar Hamzaogullari on 06.08.2017.
  */
 public class App {
@@ -72,24 +74,30 @@ public class App {
 
 
     LOGGER.info("Running the system first time............");
+    // 删除文件
     eventProcessor.reset();
 
     LOGGER.info("Creating the accounts............");
 
+    // 创建一个账户
     eventProcessor.process(new AccountCreateEvent(
         0, new Date().getTime(), ACCOUNT_OF_DAENERYS, "Daenerys Targaryen"));
 
+    // 再创建一个账户
     eventProcessor.process(new AccountCreateEvent(
         1, new Date().getTime(), ACCOUNT_OF_JON, "Jon Snow"));
 
     LOGGER.info("Do some money operations............");
 
+    // 存款事件
     eventProcessor.process(new MoneyDepositEvent(
         2, new Date().getTime(), ACCOUNT_OF_DAENERYS,  new BigDecimal("100000")));
 
+    // 存款事件
     eventProcessor.process(new MoneyDepositEvent(
         3, new Date().getTime(), ACCOUNT_OF_JON,  new BigDecimal("100")));
 
+    // 转账活动
     eventProcessor.process(new MoneyTransferEvent(
         4, new Date().getTime(), new BigDecimal("10000"), ACCOUNT_OF_DAENERYS,
         ACCOUNT_OF_JON));

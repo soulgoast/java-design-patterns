@@ -59,6 +59,10 @@ public class Audio {
 
   }
 
+  /**
+   * 单例模式
+   * @return
+   */
   public static Audio getInstance() {
     return INSTANCE;
   }
@@ -88,6 +92,9 @@ public class Audio {
    */
   public void init() {
     if (updateThread == null) {
+      /**
+       * 初始化一个线程
+       */
       updateThread = new Thread(() -> {
         while (!Thread.currentThread().isInterrupted()) {
           update();
@@ -99,6 +106,7 @@ public class Audio {
   
   /**
    * This is a synchronized thread starter
+   * 运行线程，并初始化headIndex, tailIndex
    */
   private synchronized void startThread() {
     if (!updateThread.isAlive()) {
@@ -111,11 +119,14 @@ public class Audio {
   /**
    * This method adds a new audio into the queue.
    * @param stream is the AudioInputStream for the method
-   * @param volume is the level of the audio's volume 
+   * @param volume is the level of the audio's volume 音量大小
    */
   public void playSound(AudioInputStream stream, float volume) {
     init();
     // Walk the pending requests.
+    // 第一次运行playSound，不会执行for循环
+    // 第二次运行playSound, headIndex = 0, tailIndex = 1， i = 1; 结果：
+    // 此for循环是用来替换数组pendingAudio中的数据
     for (int i = headIndex; i != tailIndex; i = (i + 1) % MAX_PENDING) {
       if (getPendingAudio()[i].getStream() == stream) {
         // Use the larger of the two volumes.
@@ -125,6 +136,13 @@ public class Audio {
         return;
       }
     }
+
+    /**
+     * 在数组pendingAudio放入需要播放的信息
+     * tailIndex = 1;
+     *
+     *
+     */
     getPendingAudio()[tailIndex] = new PlayMessage(stream, volume);
     tailIndex = (tailIndex + 1) % MAX_PENDING;
   }
@@ -155,6 +173,7 @@ public class Audio {
   }
 
   /**
+   * 返回一个AudioInputStream对象
    * Returns the AudioInputStream of a file
    * @param filePath is the path of the audio file
    * @return AudioInputStream
