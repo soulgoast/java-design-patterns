@@ -22,6 +22,8 @@
  */
 package com.iluwatar.aggregator.microservices;
 
+import com.alibaba.fastjson.JSONObject;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -54,5 +56,12 @@ public class Aggregator {
     product.setProductInventories(inventoryClient.getProductInventories());
     return product;
   }
+
+  @RequestMapping("/json")
+  public void post(@RequestBody Object object) {
+    String string = JSONObject.toJSONString(object);
+    System.out.println(string);
+  }
+
 
 }
