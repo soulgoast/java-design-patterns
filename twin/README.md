@@ -10,7 +10,7 @@ tags:
 ---
 
 ## Intent
- Twin pattern is a design pattern which provides a standard solution to simulate multiple
+ twin pattern is a design pattern which provides a standard solution to simulate multiple
 inheritance in java
 
 ![alt text](./etc/twin.png "Twin")
